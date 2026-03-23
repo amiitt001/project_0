@@ -11,9 +11,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 10%, rgba(0, 212, 255, 0.08), transparent 42%),
-    radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.08), transparent 35%),
-    #020304;
+  background: radial-gradient(circle at 20% 10%, rgba(0, 255, 136, 0.05), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(0, 255, 136, 0.08), transparent 40%),
+    linear-gradient(to bottom, #010a05, #00150a);
 }
 
 * {
@@ -33,6 +33,123 @@ body {
 .noise-overlay {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   opacity: 0.4;
+}
+
+.countdown-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 80px rgba(5, 12, 30, 0.45);
+}
+
+.countdown-panel__glow {
+  position: absolute;
+  left: 12%;
+  top: -10rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle, rgba(255, 245, 180, 0.5) 0%, rgba(255, 245, 180, 0.08) 48%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.countdown-panel__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(76, 120, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 120, 255, 0.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.55));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.55));
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.countdown-slot {
+  position: relative;
+}
+
+.countdown-value {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(3.8rem, 8vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  color: #f8fbff;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 22px rgba(66, 133, 244, 0.22),
+    0 0 42px rgba(255, 255, 255, 0.06);
+}
+
+.countdown-label-wrap {
+  margin-top: 1.8rem;
+  display: inline-flex;
+  min-width: min(100%, 13rem);
+  justify-content: center;
+  border-bottom: 3px solid rgba(55, 112, 255, 0.95);
+  padding-bottom: 0.55rem;
+}
+
+.countdown-label {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(194, 208, 241, 0.88);
+}
+
+.countdown-cta {
+  position: relative;
+  display: inline-flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 1.6rem) 0, 100% 25%, 100% 75%, calc(100% - 1.6rem) 100%, 0 100%, 0 28%, 0.9rem 0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
+}
+
+.countdown-cta:hover {
+  transform: translateY(-2px);
+}
+
+.countdown-cta--primary {
+  background: linear-gradient(135deg, rgba(59, 104, 233, 0.98), rgba(44, 98, 235, 0.92));
+  color: #f8fbff;
+  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.28);
+}
+
+.countdown-cta--ghost {
+  border: 2px solid rgba(70, 120, 255, 0.85);
+  background: rgba(18, 24, 45, 0.52);
+  color: #f8fbff;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 767px) {
+  .countdown-label-wrap {
+    display: flex;
+    width: 100%;
+  }
+
+  .countdown-cta {
+    min-height: 4rem;
+    font-size: 1.6rem;
+  }
 }
 
 .timeline-shell {
@@ -297,4 +414,212 @@ a, button {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: #00ff88; }
+}
+
+/* ── Loading Screen ─────────────────────────────────── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020304;
+  transition: opacity var(--fade-duration, 600ms) ease, visibility 0s linear var(--fade-duration, 600ms);
+}
+
+.loading-screen--hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-screen__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+}
+
+.loading-screen__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 1;
+}
+
+.loading-screen__ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.loading-screen__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.loading-screen__progress {
+  transition: stroke-dashoffset 60ms linear;
+}
+
+.loading-screen__pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-screen__number {
+  font-family: "IBM Plex Mono", "Share Tech Mono", monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #e2e8f0;
+  text-shadow: 0 0 10px rgba(0,255,136,0.4);
+}
+
+.loading-screen__status {
+  font-family: "IBM Plex Mono", "Share Tech Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(148,163,184,0.7);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.loading-screen__status--ready {
+  color: #00ff88;
+  text-shadow: 0 0 12px rgba(0,255,136,0.5);
+  animation: status-pulse 0.6s ease;
+}
+
+@keyframes status-pulse {
+  0%   { opacity: 0; transform: scale(0.92); }
+  60%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── 3D Perspective Gallery ──────────────────────── */
+.gallery-3d-section {
+  perspective: 1400px;
+  overflow: visible !important;
+}
+
+.gallery-3d-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  transform: rotateX(8deg) rotateY(-4deg) rotateZ(1.5deg);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  padding: 2rem 0;
+}
+
+.gallery-3d-row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-3d-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.gallery-3d-track--left {
+  animation: gallery-scroll-left 30s linear infinite;
+}
+
+.gallery-3d-track--right {
+  animation: gallery-scroll-right 34s linear infinite;
+}
+
+@keyframes gallery-scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes gallery-scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.gallery-3d-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 22rem;
+  height: 14rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(100, 200, 160, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-3d-card:hover {
+  transform: scale(1.05) translateZ(16px);
+  box-shadow:
+    0 12px 48px rgba(0, 255, 136, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.gallery-3d-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.gallery-3d-card:hover .gallery-3d-glow {
+  opacity: 1;
+}
+
+.gallery-3d-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.5) brightness(0.85);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.gallery-3d-card:hover .gallery-3d-img {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.08);
+}
+
+@media (min-width: 768px) {
+  .gallery-3d-card {
+    width: 28rem;
+    height: 17rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-3d-card {
+    width: 32rem;
+    height: 19rem;
+  }
 }

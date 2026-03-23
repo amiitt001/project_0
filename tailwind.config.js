@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         neon: "#00ff88",
-        void: "#020304",
-        surface: "#0d1117"
+        void: "#010a05",
+        surface: "#05150a"
       }
     }
   },
