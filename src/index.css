@@ -565,8 +565,8 @@ a, button {
 .gallery-3d-card {
   position: relative;
   flex-shrink: 0;
-  width: 22rem;
-  height: 14rem;
+  width: 14rem;
+  height: 9rem;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid rgba(100, 200, 160, 0.15);
@@ -612,14 +612,14 @@ a, button {
 
 @media (min-width: 768px) {
   .gallery-3d-card {
-    width: 28rem;
-    height: 17rem;
+    width: 18rem;
+    height: 11rem;
   }
 }
 
 @media (min-width: 1024px) {
   .gallery-3d-card {
-    width: 32rem;
-    height: 19rem;
+    width: 20rem;
+    height: 12rem;
   }
 }

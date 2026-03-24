@@ -7,9 +7,9 @@ import MobileBlocker from "./components/MobileBlocker";
 
 const stats = [
   { value: "6", label: "Challenge Modules" },
-  { value: "48H", label: "Duration" },
+  { value: "6H", label: "Duration" },
   { value: "3", label: "Winner Tiers" },
-  { value: "200+", label: "Participants Expected" }
+  { value: "60+", label: "Participants Expected" }
 ];
 
 const challengeTracks = [
@@ -31,34 +31,46 @@ const rules = [
 ];
 
 const memories = [
-  "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1614064641913-6b7141508db8?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1555949963-aa79dcee57d5?auto=format&fit=crop&q=80&w=400&h=300",
-  "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=400&h=300"
+  "/DSC01346-2.jpg",
+  "/DSC01370.jpg",
+  "/DSC01669.JPG",
+  "/DSC01899 (1).JPG",
+  "/DSC01922.JPG",
+  "/DSC02016.JPG",
+  "/DSC02034.JPG",
+  "/DSC02073.JPG",
+  "/IMG_1218.jpg",
+  "/IMG_1237.jpg",
+  "/IMG_1290.jpg",
+  "/IMG_20250509_122820.jpg",
+  "/IMG_20250509_203001.jpg",
+  "/IMG_20250510_134216.jpg",
+  "/IMG_20250510_134304.jpg",
+  "/IMG_20250510_134706.jpg",
+  "/IMG_20250510_140035.jpg",
+  "/IMG_20250510_141340.jpg",
+  "/IMG_20250510_141405.jpg",
+  "/IMG_20250510_192056.jpg"
 ];
 
 const timeline = [
-  { date: "April 1 - 3", title: "Registration Period", desc: "Sign up on Unstop to secure your spot in the league. Limited entries available." },
+  { date: "March 26 - April 6", title: "Registration Period", desc: "Sign up on Unstop to secure your spot in the league. Limited entries available." },
   { date: "April 4", title: "Mock Contest", desc: "Get familiar with the platform and testing environment. Not scored." },
   { date: "April 5 | 10:00 AM", title: "PromptWar Qualifier", desc: "The online battle begins. Two hours of algorithmic challenges." },
   { date: "April 5 | 03:00 PM", title: "Finalists Announcement", desc: "The top 50 participants who qualify for the grand finale are announced." },
-  { date: "April 10", title: "Grand Finale and Ceremony", desc: "The offline showdown at Galgotias Campus, followed by the prize ceremony." }
+  { date: "April 7", title: "Grand Finale and Ceremony", desc: "The offline showdown at Galgotias Campus, followed by the prize ceremony." }
 ];
 
 const faqs = [
   { question: "Who can participate?", answer: "The event is open to all university students. You can participate solo or in teams of up to 3 members." },
   { question: "Is there any registration fee?", answer: "No, participation in PromptWar is completely free of charge." },
-  { question: "What is the format of the event?", answer: "The competition starts with an online qualifier on April 5th. The top 50 participants will be invited to the offline Grand Finale at Galgotias Campus on April 10th." },
+  { question: "What is the format of the event?", answer: "The competition starts with an online qualifier on April 5th. The top 50 participants will be invited to the offline Grand Finale at Galgotias Campus on April 7th." },
   { question: "Do I need prior experience in AI red-teaming?", answer: "While helpful, prior experience isn't required. We provide a platform guide and resources. It's a great opportunity to learn about AI security and prompt engineering!" }
 ];
 
 const getCountdownTarget = () => {
   const now = new Date();
-  const target = new Date(`${now.getFullYear()}-04-10T10:00:00+05:30`);
+  const target = new Date(`${now.getFullYear()}-04-07T10:00:00+05:30`);
   if (target <= now) target.setFullYear(target.getFullYear() + 1);
   return target;
 };
@@ -375,7 +387,7 @@ export default function App() {
           <div className="gallery-3d-wrapper">
             <div className="gallery-3d-row gallery-3d-row--top">
               <div className="gallery-3d-track gallery-3d-track--left">
-                {[...memories.slice(0, 4), ...memories.slice(0, 4)].map((src, idx) => (
+                {[...memories.slice(0, Math.ceil(memories.length / 2)), ...memories.slice(0, Math.ceil(memories.length / 2))].map((src, idx) => (
                   <div key={`top-${idx}`} className="gallery-3d-card group">
                     <div className="gallery-3d-glow" />
                     <img src={src} alt={`Memory ${idx}`} className="gallery-3d-img" loading="lazy" />
@@ -385,10 +397,10 @@ export default function App() {
             </div>
             <div className="gallery-3d-row gallery-3d-row--bottom">
               <div className="gallery-3d-track gallery-3d-track--right">
-                {[...memories.slice(4), ...memories.slice(4)].map((src, idx) => (
+                {[...memories.slice(Math.ceil(memories.length / 2)), ...memories.slice(Math.ceil(memories.length / 2))].map((src, idx) => (
                   <div key={`bot-${idx}`} className="gallery-3d-card group">
                     <div className="gallery-3d-glow" />
-                    <img src={src} alt={`Memory ${idx + 4}`} className="gallery-3d-img" loading="lazy" />
+                    <img src={src} alt={`Memory ${idx + Math.ceil(memories.length / 2)}`} className="gallery-3d-img" loading="lazy" />
                   </div>
                 ))}
               </div>
