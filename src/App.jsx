@@ -3,7 +3,6 @@ import anime from "animejs/lib/anime.es.js";
 import ThreeBackdrop from "./components/ThreeBackdrop";
 import AnimateUI from "./components/AnimateUI";
 import LoadingScreen from "./components/LoadingScreen";
-import MobileBlocker from "./components/MobileBlocker";
 
 const stats = [
   { value: "6", label: "Challenge Modules" },
@@ -87,8 +86,8 @@ const formatCountdown = (distance) => {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [countdown, setCountdown] = useState(() => {
     const target = getCountdownTarget();
     return formatCountdown(target.getTime() - Date.now());
@@ -156,12 +155,12 @@ export default function App() {
     return () => window.clearInterval(intervalId);
   }, []);
 
+  // Close mobile menu on scroll
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    const handleScroll = () => { if (menuOpen) setMenuOpen(false); };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuOpen]);
 
   const countdownItems = [
     { label: "Days", value: countdown.days },
@@ -172,7 +171,6 @@ export default function App() {
 
   return (
     <main className={`relative min-h-screen bg-void text-white selection:bg-neon/25 selection:text-white ${loading ? "h-screen overflow-hidden" : "overflow-x-hidden"}`}>
-      {isMobile && <MobileBlocker />}
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <ThreeBackdrop />
 
@@ -181,9 +179,9 @@ export default function App() {
       <div className="scanline-moving pointer-events-none fixed inset-0 z-10 hidden md:block" />
 
       <AnimateUI className="relative z-10 flex flex-col w-full">
-        <header data-animate className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-black/30 px-6 py-4 backdrop-blur-md md:px-10">
+        <header data-animate className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-black/30 px-4 py-3 backdrop-blur-md md:px-10 md:py-4">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
-            <a href="#hero" className="font-semibold tracking-[0.2em] text-neon">PROMPTWAR</a>
+            <a href="#hero" className="font-semibold tracking-[0.2em] text-neon text-sm md:text-base">PROMPTWAR</a>
             <nav className="hidden gap-8 text-xs uppercase tracking-[0.18em] text-slate-300 md:flex">
               <a href="#about" className="transition hover:text-neon">About</a>
               <a href="#challenges" className="transition hover:text-neon">Challenges</a>
@@ -195,7 +193,35 @@ export default function App() {
             <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-neon md:flex">
               <span className="status-dot" /> Registrations Open
             </div>
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden flex flex-col gap-[5px] p-2 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <span className={`block h-[2px] w-5 bg-neon transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block h-[2px] w-5 bg-neon transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-[2px] w-5 bg-neon transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+            </button>
           </div>
+          {/* Mobile dropdown */}
+          <nav className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-80 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+            <div className="flex flex-col gap-3 pb-3 border-t border-slate-800/50 pt-3">
+              {["about","challenges","rules","prizes","memories","register"].map(item => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-xs uppercase tracking-[0.18em] text-slate-300 transition hover:text-neon py-1.5 px-2"
+                >
+                  {item}
+                </a>
+              ))}
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-neon px-2 pt-1">
+                <span className="status-dot" /> Registrations Open
+              </div>
+            </div>
+          </nav>
         </header>
 
         {/* ── Hero ──────────────────────────────────── */}
@@ -204,7 +230,7 @@ export default function App() {
             <div className="lg:w-3/5 relative z-10">
               <div className="hero-glow absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
               <p className="text-xs uppercase tracking-[0.3em] text-neon">LLM Security Challenge - Red Team Event</p>
-              <h1 className="mt-4 font-sans text-5xl font-bold leading-[0.95] md:text-8xl">
+              <h1 className="mt-4 font-sans text-4xl font-bold leading-[0.95] sm:text-5xl md:text-8xl">
                 <span className="glitch-text" data-text="PROMPT">PROMPT</span>
                 <span className="mt-2 block text-[#00ff88] opacity-90">WAR_</span>
               </h1>
@@ -226,12 +252,12 @@ export default function App() {
                 </a>
               </div>
               
-              <div className="mt-20 w-fit">
-                <div className="flex flex-wrap gap-8 md:gap-16">
+              <div className="mt-14 sm:mt-20 w-full sm:w-fit">
+                <div className="flex justify-between gap-4 sm:gap-8 md:gap-16">
                   {countdownItems.map((item) => (
-                    <article key={item.label} className="text-left">
-                      <p className="font-mono text-5xl font-bold text-neon md:text-6xl" style={{ textShadow: '0 0 24px rgba(0,255,136,0.4)' }}>{item.value}</p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-slate-400">{item.label}</p>
+                    <article key={item.label} className="text-center sm:text-left">
+                      <p className="font-mono text-2xl font-bold text-neon sm:text-5xl md:text-6xl" style={{ textShadow: '0 0 24px rgba(0,255,136,0.4)' }}>{item.value}</p>
+                      <p className="mt-1 sm:mt-2 text-[9px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-400">{item.label}</p>
                     </article>
                   ))}
                 </div>

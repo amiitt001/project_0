@@ -623,3 +623,74 @@ a, button {
     height: 12rem;
   }
 }
+
+/* ── Mobile-specific optimizations ────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 767px) {
+  /* Reduce GPU-heavy effects */
+  .scanline-overlay {
+    display: none;
+  }
+
+  .noise-overlay {
+    opacity: 0.15;
+  }
+
+  /* Smoother touch scrolling */
+  main {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Gallery performance on mobile */
+  .gallery-3d-wrapper {
+    transform: rotateX(4deg) rotateY(-2deg) rotateZ(0.5deg);
+  }
+
+  .gallery-3d-card {
+    width: 10rem;
+    height: 6.5rem;
+  }
+
+  .gallery-3d-track--left {
+    animation-duration: 20s;
+  }
+
+  .gallery-3d-track--right {
+    animation-duration: 22s;
+  }
+
+  /* Disable hover-only animations on touch */
+  .hover-glitch:hover {
+    animation: none;
+  }
+
+  .track-card:hover {
+    transform: none;
+  }
+
+  /* Remove will-change on mobile to save memory */
+  .track-card,
+  .timeline-card {
+    will-change: auto;
+  }
+
+  /* Fix backdrop-filter performance */
+  .track-card,
+  .timeline-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
