@@ -5,25 +5,25 @@ import AnimateUI from "./components/AnimateUI";
 import LoadingScreen from "./components/LoadingScreen";
 
 const stats = [
-  { value: "50", label: "Students Expected" },
-  { value: "₹199", label: "Registration" },
-  { value: "₹10K", label: "Prize Pool" },
-  { value: "3", label: "Winner Tiers" }
+  { value: "Individual", label: "Participation" },
+  { value: "₹200", label: "Registration" },
+  { value: "₹60K", label: "Prize Pool" },
+  { value: "BYOL", label: "Bring Your Laptop" }
 ];
 
 const challengeTracks = [
-  { name: "Level-Based Qualifier", level: "Round 1", desc: "All participants start at Level 1. Face a restricted AI system with a hidden objective. Break the constraints to progress.", tags: ["Qualifier", "Level 1"] },
-  { name: "Progressive Elimination", level: "Round 2", desc: "Difficulty increases with each level. Only those who crack higher levels move ahead. Scored by levels cleared and time taken.", tags: ["Elimination", "Speed"] },
-  { name: "Final Showdown", level: "Round 3", desc: "Top participants face advanced AI systems with multi-layer defenses. Real-time leaderboard tracking the ultimate winner.", tags: ["Finale", "Advanced"] }
+  { name: "Knockout Stages", level: "Elimination", desc: "Multi-round knockout format. In each round, approx. 50% of participants advance. Rounds last 45 minutes with a focus on logic and speed.", tags: ["45 Min Rounds", "50% Advance"] },
+  { name: "Core Problems", level: "Structure", desc: "Each round includes 3 problems: Data Structures & Algorithms, Logical Reasoning, and Implementation. No room for error.", tags: ["DSA", "Logic"] },
+  { name: "Final Showdown", level: "GPL Champion", desc: "Finalists compete in a high-stakes final round. The last remaining participant will be crowned the GPL 1.0 Champion.", tags: ["Finale", "Champion"] }
 ];
 
 const rules = [
-  "Platform: Custom-built PromptWars web application.",
-  "Participants must rely strictly on their own logic and prompt engineering skills.",
-  "Strictly prohibited: External help, collaboration, and pre-built jailbreak scripts.",
-  "Do not exploit platform bugs (report them instead).",
-  "Maintain fair play. Do not share answers or specific prompts during the event.",
-  "Any malpractice will lead to immediate disqualification."
+  "Eligibility: Open to all undergraduate students (Individual Participation).",
+  "Setup: Participants must bring their own laptops. internet restricted to competition platform.",
+  "Knockout: Approx. 50% participants advance per round until a single champion remains.",
+  "Scoring: Based on problems solved, time taken, and penalty for incorrect submissions.",
+  "Strictly Prohibited: AI tools, online forums, code sharing, or external resources.",
+  "Conduct: Plagiarism or disruptive behavior leads to immediate disqualification."
 ];
 
 const memories = [
@@ -50,23 +50,71 @@ const memories = [
 ];
 
 const timeline = [
-  { date: "March 26 - April 6", title: "Registration Period", desc: "Sign up on Unstop to secure your spot in the league. Limited entries available." },
-  { date: "April 7 | 09:00 AM", title: "Event Kickoff", desc: "Reporting and commencement of the PromptWar challenge at Galgotias Campus." },
-  { date: "April 7 | 09:30 AM - 01:30 PM", title: "PromptWar Challenges", desc: "Level-based qualifiers, progressive elimination, and final showdown." },
-  { date: "April 7 | 02:00 PM", title: "Prize Ceremony", desc: "Announcement of winners and distribution of the prize pool." }
+  { date: "06 Apr | 12:00 AM", title: "Registration Deadline", desc: "Final call for entries. Secure your spot before the league closes." },
+  { date: "Event Day | 09:00 AM", title: "Reporting & Setup", desc: "Late arrivals lead to disqualification. Bring your own laptops." },
+  { date: "Event Day | 45m/Stage", title: "Knockout Rounds", desc: "Continuous 45-minute rounds with approx. 50% elimination each phase." },
+  { date: "Event Day | Finale", title: "Grand Ceremony", desc: "Finalists compete for the crown and total prizes worth ₹60,000." }
 ];
 
-const faqs = [
-  { question: "Who can participate?", answer: "The event is open to university students, with an expected crowd of 50 participants." },
-  { question: "Is there any registration fee?", answer: "Yes, the registration fee is ₹199 per participant." },
-  { question: "What is the format of the event?", answer: "PromptWars is a gamified cyber-security style challenge featuring a Level-Based Qualifier, Progressive Elimination, and a Final Showdown." },
-  { question: "Do I need prior experience in AI red-teaming?", answer: "While helpful, prior experience isn't required. We provide a platform guide. It's a great opportunity to learn about AI security and prompt engineering!" }
+const faqCategories = [
+  {
+    title: "General",
+    faqs: [
+      { q: "Who can participate in GPL 1.0?", a: "GPL is open to all undergraduate students." },
+      { q: "Is prior competitive programming experience required?", a: "No, the event is designed for both beginners and experts to test their logic and speed." },
+      { q: "Is the contest individual or team-based?", a: "This is for individual participation only; no teams are allowed." }
+    ]
+  },
+  {
+    title: "Technical",
+    faqs: [
+      { q: "What programming languages are supported?", a: "The online judge platform supports all major competitive programming languages." },
+      { q: "Which platform will be used for the contest?", a: "We use an online judge system with automated evaluation for correctness and efficiency." },
+      { q: "How will the contest be evaluated?", a: "Evaluation is based on problems solved, execution time, and correctness." },
+      { q: "What is the penalty system?", a: "Incorrect submissions result in a time penalty to ensure accuracy." }
+    ]
+  },
+  {
+    title: "Rounds & Format",
+    faqs: [
+      { q: "How many rounds are there?", a: "GPL 1.0 follows a multi-round knockout format until a champion is crowned." },
+      { q: "How do I qualify for the final round?", a: "Excel in the top 50% of participants in each successive elimination phase." },
+      { q: "What is the difficulty level of the contest?", a: "Problems cover DSA, Logical Reasoning, and Implementation across various complexities." }
+    ]
+  },
+  {
+    title: "Registration",
+    faqs: [
+      { q: "What is the registration fee?", a: "The registration fee for GPL 1.0 is ₹200." },
+      { q: "How can I register?", a: "Follow the registration link provided on our Unstop event page." },
+      { q: "What details are required during registration?", a: "Name, Student ID, Branch/Year, Phone Number, and Programming handles." }
+    ]
+  },
+  {
+    title: "Prizes",
+    faqs: [
+      { q: "What are the prizes?", a: "Total prize pool is ₹60,000 with ₹35K for the Winner and ₹25K for the Runner-up." },
+      { q: "Are there any additional benefits?", a: "Top 10 participants receive exclusive Tech Jerseys, plus medals and certificates." }
+    ]
+  },
+  {
+    title: "Rules",
+    faqs: [
+      { q: "Is plagiarism allowed?", a: "Any form of plagiarism or code sharing results in immediate disqualification." },
+      { q: "Can I use external resources during the contest?", a: "AI tools, online forums, and external resources are strictly prohibited." }
+    ]
+  },
+  {
+    title: "Logistics",
+    faqs: [
+      { q: "Where will the final round be conducted?", a: "The event is held offline at Galgotias College of Engineering & Technology (GCET), Greater Noida." },
+      { q: "Do I need to bring my own laptop?", a: "Yes, all participants must bring their own laptops for the competition." }
+    ]
+  }
 ];
 
 const getCountdownTarget = () => {
-  const now = new Date();
-  const target = new Date(`${now.getFullYear()}-04-07T09:00:00+05:30`);
-  if (target <= now) target.setFullYear(target.getFullYear() + 1);
+  const target = new Date(`2026-04-06T00:00:00+05:30`);
   return target;
 };
 
@@ -85,6 +133,7 @@ export default function App() {
   const [activeFaq, setActiveFaq] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroImg, setHeroImg] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [countdown, setCountdown] = useState(() => {
     const target = getCountdownTarget();
     return formatCountdown(target.getTime() - Date.now());
@@ -105,6 +154,7 @@ export default function App() {
     anime.set(".track-card, .stat-card, [data-animate]", { opacity: 0, translateY: 30 });
     anime.set(".timeline-card, .timeline-node", { opacity: 0 });
     anime.set(".timeline-rail", { scaleY: 0 });
+    anime.set(".gallery-3d-card", { opacity: 0, scale: 0.5 });
 
     return () => glowAnim.pause();
   }, []);
@@ -127,6 +177,9 @@ export default function App() {
             animations.push(anime({ targets: ".timeline-card", opacity: [0, 1], translateY: [32, 0], delay: anime.stagger(130), duration: 900, easing: "easeOutExpo" }));
             animations.push(anime({ targets: ".timeline-node", scale: [0.5, 1], opacity: [0, 1], delay: anime.stagger(130), duration: 700, easing: "easeOutBack" }));
             animations.push(anime({ targets: ".timeline-node", boxShadow: ["0 0 0 4px rgba(0,255,136,0.08), 0 0 14px rgba(0,255,136,0.55)", "0 0 0 8px rgba(0,255,136,0.02), 0 0 28px rgba(0,255,136,0.95)"], direction: "alternate", loop: true, easing: "easeInOutSine", duration: 1800, delay: anime.stagger(170) }));
+          } else if (target.classList.contains("gallery-3d-section")) {
+            animations.push(anime({ targets: target, opacity: [0, 1], translateY: [30, 0], duration: 900, easing: "easeOutExpo" }));
+            animations.push(anime({ targets: ".gallery-3d-card", opacity: [0, 1], scale: [0.5, 1], delay: anime.stagger(50, { start: 200 }), duration: 800, easing: "easeOutBack" }));
           } else {
             animations.push(anime({ targets: target, opacity: [0, 1], translateY: [30, 0], duration: 900, easing: "easeOutExpo" }));
           }
@@ -158,9 +211,12 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
-  // Close mobile menu on scroll
+  // Close mobile menu on scroll & Toggle scroll to top button
   useEffect(() => {
-    const handleScroll = () => { if (menuOpen) setMenuOpen(false); };
+    const handleScroll = () => {
+      if (menuOpen) setMenuOpen(false);
+      setShowScrollTop(window.scrollY > 500);
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuOpen]);
@@ -185,16 +241,18 @@ export default function App() {
         <header data-animate className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-black/30 px-4 py-3 backdrop-blur-md md:px-10 md:py-4">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
             <a href="#hero" className="flex items-center gap-2 sm:gap-3">
-              <img src="/eventlogo.png" alt="PromptWar Logo" className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 object-contain" />
-              <span className="font-semibold tracking-[0.2em] text-neon text-sm md:text-base">PROMPTWAR</span>
+              <img src="/eventlogo.png" alt="GPL Logo" className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 object-contain" />
+              <span className="font-semibold tracking-[0.2em] text-neon text-sm md:text-base">GPL 1.0</span>
             </a>
-            <nav className="hidden gap-8 text-xs uppercase tracking-[0.18em] text-slate-300 md:flex">
+            <nav className="hidden gap-6 text-[10px] items-center uppercase tracking-[0.15em] text-slate-300 lg:flex lg:gap-8">
               <a href="#about" className="transition hover:text-neon">About</a>
               <a href="#challenges" className="transition hover:text-neon">Challenges</a>
+              <a href="#timeline" className="transition hover:text-neon">Timeline</a>
               <a href="#rules" className="transition hover:text-neon">Rules</a>
               <a href="#prizes" className="transition hover:text-neon">Prizes</a>
               <a href="#memories" className="transition hover:text-neon">Memories</a>
-              <a href="#register" className="transition hover:text-neon">Register</a>
+              <a href="#faq" className="transition hover:text-neon">FAQ</a>
+              <a href="#register" className="ml-2 rounded border border-neon/50 bg-neon/5 px-3 py-1.5 text-neon transition hover:bg-neon hover:text-black">Register</a>
             </nav>
             <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-neon md:flex">
               <span className="status-dot" /> Registrations Open
@@ -213,7 +271,7 @@ export default function App() {
           {/* Mobile dropdown */}
           <nav className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-80 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
             <div className="flex flex-col gap-3 pb-3 border-t border-slate-800/50 pt-3">
-              {["about", "challenges", "rules", "prizes", "memories", "register"].map(item => (
+              {["about", "challenges", "timeline", "rules", "prizes", "memories", "faq", "register"].map(item => (
                 <a
                   key={item}
                   href={`#${item}`}
@@ -235,22 +293,21 @@ export default function App() {
           <div className="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
             <div className="lg:w-3/5 relative z-10">
               <div className="hero-glow absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
-              <p className="text-xs uppercase tracking-[0.3em] text-neon">LLM Security Challenge - Red Team Event</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-neon">Competitive Programming Tournament</p>
               <h1 className="mt-4 font-sans text-4xl font-bold leading-[0.95] sm:text-5xl md:text-8xl">
-                <span className="glitch-text" data-text="PROMPT">PROMPT</span>
-                <span className="mt-2 block text-[#00ff88] opacity-90">WAR_</span>
+                <span className="glitch-text" data-text="GALGOTIAS">GALGOTIAS</span>
+                <span className="mt-2 block text-[#00ff88] opacity-90">PROGRAMMING LEAGUE_</span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
                 <span className="typing-wrapper block mb-3 font-mono text-sm uppercase tracking-widest text-neon">
-                  &gt; INITIALIZING RED TEAM PROTOCOL_
+                  &gt; INITIALIZING TOURNAMENT ROUTINE_
                 </span>
                 <span className="block hover-glitch">
-                  Break the model. Exploit the guardrails. Rewrite the rules. A hands-on jailbreak event
-                  where language, logic, and adversarial creativity decide the leaderboard.
+                  Solve algorithms. Optimize your code. Climb the ranks. The flagship competitive programming tournament aimed at fostering coding excellence and logic building.
                 </span>
               </p>
               <div id="register" className="mt-10 flex flex-wrap gap-4">
-                <a href="https://unstop.com" target="_blank" rel="noreferrer" className="hover-glitch rounded border border-neon bg-neon/10 backdrop-blur-sm px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-neon transition hover:bg-neon hover:text-black hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]">
+                <a href="https://unstop.com/o/eqZSOMm" target="_blank" rel="noreferrer" className="hover-glitch rounded border border-neon bg-neon/10 backdrop-blur-sm px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-neon transition hover:bg-neon hover:text-black hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]">
                   Register Now
                 </a>
                 <a href="#challenges" className="rounded border border-slate-700 bg-black/20 backdrop-blur-sm px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-300 transition hover:border-slate-500 hover:text-white">
@@ -273,8 +330,8 @@ export default function App() {
             <div className="lg:w-2/5 flex justify-center lg:justify-end relative z-10 mt-12 lg:mt-0 w-full">
               <div className="hero-roll-container relative w-72 sm:w-80 md:w-96 lg:w-[36rem] aspect-square">
                 {[
-                  { src: "/eventlogo.png", alt: "PromptWar Event Logo" },
-                  { src: "/mascot.png", alt: "PromptWar Mascot" },
+                  { src: "/eventlogo.png", alt: "GPL Event Logo" },
+                  { src: "/mascot.png", alt: "GPL Mascot" },
                   { src: "/loop.png", alt: "LOOP Club Logo" }
                 ].map((img, i) => {
                   let stateClass = 'hero-roll-enter';
@@ -313,24 +370,24 @@ export default function App() {
           <div className="mx-auto grid w-full max-w-7xl gap-12 px-6 md:grid-cols-2 md:gap-24 md:px-10 items-center">
             <article>
               <p className="text-xs uppercase tracking-[0.3em] text-neon">What is this</p>
-              <h2 className="mt-4 font-sans text-4xl font-bold leading-tight text-white md:text-6xl hover-glitch">Hack the AI</h2>
-              <p className="mt-8 text-lg leading-relaxed text-slate-300">PromptWars is a next-generation AI challenge focused on prompt engineering, logic manipulation, and adversarial thinking.</p>
-              <p className="mt-4 text-lg leading-relaxed text-slate-400">Interact with a custom-built AI system designed with layered security. Break constraints to progress through increasingly difficult levels. We emphasize how you think, not just how you code.</p>
+              <h2 className="mt-4 font-sans text-4xl font-bold leading-tight text-white md:text-6xl hover-glitch">Only the Best Advance</h2>
+              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament organized by LOOP – The Technical Club of GCET.</p>
+              <p className="mt-4 text-lg leading-relaxed text-slate-400">The event is designed to test participants’ problem-solving ability, coding speed, and algorithmic thinking under pressure through structured elimination rounds. Think Fast. Code Faster.</p>
             </article>
             <article className="rounded-2xl border border-slate-700/40 bg-black/40 backdrop-blur-md p-8 shadow-2xl">
               <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
                 <span className="h-3 w-3 rounded-full bg-red-500" />
                 <span className="h-3 w-3 rounded-full bg-amber-500" />
                 <span className="h-3 w-3 rounded-full bg-green-500" />
-                <span className="ml-auto text-xs uppercase tracking-[0.15em] text-slate-500 font-mono">red_team_session.sh</span>
+                <span className="ml-auto text-xs uppercase tracking-[0.15em] text-slate-500 font-mono">gpl_compile.sh</span>
               </div>
               <div className="space-y-4 font-mono text-sm leading-relaxed text-slate-300">
-                <p><span className="text-neon">$</span> initialize_target --mode adversarial</p>
-                <p><span className="text-neon">[OK]</span> Target loaded. Safety filters: ACTIVE</p>
-                <p><span className="text-neon">$</span> probe --technique context_overflow --layers 3</p>
-                <p><span className="text-amber-400">[WARN]</span> Unusual response pattern detected</p>
-                <p><span className="text-neon">$</span> escalate --chain multi_turn</p>
-                <p><span className="text-emerald-400 font-bold">[BREACH]</span> Guardrail bypass confirmed</p>
+                <p><span className="text-neon">$</span> g++ solution.cpp -O2 -std=c++17</p>
+                <p><span className="text-neon">[OK]</span> Compilation successful. Running test cases...</p>
+                <p><span className="text-neon">$</span> run_tests --all</p>
+                <p><span className="text-neon">Test 1:</span> <span className="text-green-400">Passed [0.012s]</span></p>
+                <p><span className="text-neon">Test 2:</span> <span className="text-green-400">Passed [0.045s]</span></p>
+                <p><span className="text-emerald-400 font-bold">[ACCEPTED]</span> All test cases passed. +100pts</p>
               </div>
             </article>
           </div>
@@ -408,19 +465,19 @@ export default function App() {
             <h3 className="mt-4 font-sans text-4xl font-bold text-white md:text-6xl hover-glitch">Recognition and Rewards</h3>
             <div className="mt-16 grid gap-6 md:grid-cols-3">
               <article className="rounded-2xl border border-neon/40 bg-emerald-950/20 backdrop-blur-md p-10 transform md:-translate-y-4">
-                <p className="text-sm uppercase tracking-[0.2em] text-neon font-bold">1st Place</p>
-                <h4 className="mt-4 font-sans text-5xl font-black text-neon">₹6,000</h4>
-                <p className="mt-4 text-base text-slate-300 leading-relaxed font-bold">+ Winner Certificate</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-neon font-bold">Winner</p>
+                <h4 className="mt-4 font-sans text-5xl font-black text-neon">₹35,000</h4>
+                <p className="mt-4 text-base text-slate-300 leading-relaxed font-bold">Trophy + Swag + Tech Jersey + Certificate</p>
               </article>
               <article className="rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md p-10">
-                <p className="text-sm uppercase tracking-[0.2em] text-cyan-300 font-bold">2nd Place</p>
-                <h4 className="mt-4 font-sans text-4xl font-black text-cyan-300">₹4,000</h4>
-                <p className="mt-4 text-base text-slate-300 leading-relaxed font-bold">+ Runner-Up Certificate</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-cyan-300 font-bold">Runner Up</p>
+                <h4 className="mt-4 font-sans text-4xl font-black text-cyan-300">₹25,000</h4>
+                <p className="mt-4 text-base text-slate-300 leading-relaxed font-bold">Trophy + Swag + Tech Jersey + Certificate</p>
               </article>
-              <article className="rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-md p-10 mt-6 md:mt-0">
-                <p className="text-sm uppercase tracking-[0.2em] text-amber-300 font-bold">3rd Place</p>
-                <h4 className="mt-4 font-sans text-3xl font-black text-amber-300">Special</h4>
-                <p className="mt-4 text-base text-slate-300 leading-relaxed font-bold">Memento + Certificate</p>
+              <article className="rounded-2xl border border-slate-700/30 bg-black/40 backdrop-blur-md p-10 mt-6 md:mt-0">
+                <p className="text-sm uppercase tracking-[0.2em] text-slate-400 font-bold">All Participants</p>
+                <h4 className="mt-4 font-sans text-3xl font-black text-white/80 tracking-tight leading-none uppercase">Certified</h4>
+                <p className="mt-4 text-base text-slate-400 leading-relaxed">Participation Certificate for every student</p>
               </article>
             </div>
           </div>
@@ -467,8 +524,8 @@ export default function App() {
                 <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-400">Organizing Body</p>
               </article>
               <article className="rounded-2xl border border-slate-700/40 bg-black/20 backdrop-blur-md p-8">
-                <p className="text-xl font-bold text-white">Red Team</p>
-                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-400">Challenge Design</p>
+                <p className="text-xl font-bold text-white">Problem Setters</p>
+                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-400">Technical Team</p>
               </article>
             </div>
           </div>
@@ -481,32 +538,40 @@ export default function App() {
               <p className="text-xs uppercase tracking-[0.3em] text-neon">Support</p>
               <h3 className="mt-4 font-sans text-4xl font-bold text-white md:text-6xl hover-glitch">Frequently Asked Questions</h3>
             </div>
-            <div className="space-y-4">
-              {faqs.map((faq, index) => {
-                const isActive = activeFaq === index;
-                return (
-                  <article key={index} className="rounded-2xl border border-slate-700/40 bg-black/20 backdrop-blur-md overflow-hidden transition-all duration-300">
-                    <button
-                      onClick={() => setActiveFaq(isActive ? null : index)}
-                      className="flex w-full items-center justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neon/50"
-                    >
-                      <span className={`font-sans text-xl md:text-2xl font-bold transition-colors duration-300 ${isActive ? 'text-neon' : 'text-white'}`}>
-                        {faq.question}
-                      </span>
-                      <span className={`ml-6 flex-shrink-0 text-3xl font-light transition-transform duration-300 ${isActive ? 'rotate-45 text-neon' : 'text-slate-500'}`}>
-                        +
-                      </span>
-                    </button>
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isActive ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}
-                    >
-                      <p className="px-6 pb-6 md:px-8 md:pb-8 text-base leading-relaxed text-slate-300">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
+            <div className="space-y-12">
+              {faqCategories.map((category, catIndex) => (
+                <div key={category.title}>
+                  <h4 className="text-xl font-bold text-neon mb-6 border-b border-slate-800 pb-3">{category.title}</h4>
+                  <div className="space-y-4">
+                    {category.faqs.map((faq, faqIndex) => {
+                      const uniqueIndex = `${catIndex}-${faqIndex}`;
+                      const isActive = activeFaq === uniqueIndex;
+                      return (
+                        <article key={uniqueIndex} className="rounded-2xl border border-slate-700/40 bg-black/20 backdrop-blur-md overflow-hidden transition-all duration-300">
+                          <button
+                            onClick={() => setActiveFaq(isActive ? null : uniqueIndex)}
+                            className="flex w-full items-center justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neon/50"
+                          >
+                            <span className={`font-sans text-xl md:text-2xl font-bold transition-colors duration-300 ${isActive ? 'text-neon' : 'text-white'}`}>
+                              {faq.q}
+                            </span>
+                            <span className={`ml-6 flex-shrink-0 text-3xl font-light transition-transform duration-300 ${isActive ? 'rotate-45 text-neon' : 'text-slate-500'}`}>
+                              +
+                            </span>
+                          </button>
+                          <div
+                            className={`overflow-hidden transition-all duration-300 ease-in-out ${isActive ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}
+                          >
+                            <p className="px-6 pb-6 md:px-8 md:pb-8 text-base leading-relaxed text-slate-300">
+                              {faq.a}
+                            </p>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -516,15 +581,15 @@ export default function App() {
           <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 md:flex-row md:justify-between lg:gap-24 md:px-10">
             <div className="flex flex-col gap-6 md:w-1/3">
               <div className="flex items-center gap-3 mb-2">
-                <img src="/eventlogo.png" alt="PromptWar Logo" className="h-8 w-8 object-contain" />
-                <p className="text-2xl font-bold tracking-[0.2em] text-neon">PROMPTWAR</p>
+                <img src="/eventlogo.png" alt="GPL Logo" className="h-8 w-8 object-contain" />
+                <p className="text-2xl font-bold tracking-[0.2em] text-neon">GPL 1.0</p>
               </div>
               <div className="flex items-center gap-2 text-sm leading-relaxed text-slate-400">
                 <span>Designed by</span>
                 <img src="/loop.png" alt="LOOP Logo" className="h-5 w-5 object-contain" />
                 <strong className="text-white tracking-widest">CLUB LOOP</strong>
               </div>
-              <p className="text-sm leading-relaxed text-slate-400">A security challenge redefining the boundaries of AI red-teaming and prompt engineering.</p>
+              <p className="text-sm leading-relaxed text-slate-400">A flagship competitive programming tournament focused on algorithmic thinking, coding excellence, and logic building.</p>
               <div className="mt-2 flex gap-6">
                 <a href="https://www.instagram.com/gcetloop" target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest text-slate-400 transition hover:text-neon">Instagram</a>
                 <a href="https://www.linkedin.com/company/loopgcet" target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest text-slate-400 transition hover:text-neon">LinkedIn</a>
@@ -560,8 +625,8 @@ export default function App() {
           </div>
           <div className="mx-auto mt-20 flex w-full max-w-7xl flex-col items-center justify-between border-t border-slate-800/60 pt-8 px-6 gap-6 text-xs font-mono uppercase tracking-[0.2em] text-slate-500 md:flex-row md:px-10 md:gap-0">
             <div className="flex items-center gap-3">
-              <img src="/eventlogo.png" alt="PromptWar Logo" className="h-5 w-5 object-contain opacity-60" />
-              <p>© {new Date().getFullYear()} PROMPT WAR</p>
+              <img src="/eventlogo.png" alt="GPL Logo" className="h-5 w-5 object-contain opacity-60" />
+              <p>© {new Date().getFullYear()} GALGOTIAS PROGRAMMING LEAGUE</p>
             </div>
             <div className="flex items-center gap-2">
               <span>DESIGNED BY</span>
@@ -570,6 +635,17 @@ export default function App() {
             </div>
           </div>
         </footer>
+
+        {/* Scroll to Top Button */}
+        <a
+          href="#hero"
+          className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-neon/50 bg-black/60 text-neon backdrop-blur-md transition-all duration-300 hover:bg-neon hover:text-black hover:shadow-[0_0_20px_rgba(0,255,136,0.4)] ${showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}
+          aria-label="Scroll to top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </a>
       </AnimateUI>
     </main>
   );
