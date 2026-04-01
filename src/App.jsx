@@ -252,7 +252,7 @@ export default function App() {
               <a href="#prizes" className="transition hover:text-neon">Prizes</a>
               <a href="#memories" className="transition hover:text-neon">Memories</a>
               <a href="#faq" className="transition hover:text-neon">FAQ</a>
-              <a href="#register" className="ml-2 rounded border border-neon/50 bg-neon/5 px-3 py-1.5 text-neon transition hover:bg-neon hover:text-black">Register</a>
+              <a href="https://unstop.com/o/eqZSOMm" target="_blank" className="ml-2 rounded border border-neon/50 bg-neon/5 px-3 py-1.5 text-neon transition hover:bg-neon hover:text-black">Register</a>
             </nav>
             <div className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-neon md:flex">
               <span className="status-dot" /> Registrations Open
