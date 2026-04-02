@@ -107,7 +107,7 @@ const faqCategories = [
   {
     title: "Logistics",
     faqs: [
-      { q: "Where will the final round be conducted?", a: "The event is held offline at Galgotias College of Engineering & Technology (GCET), Greater Noida." },
+      { q: "Where will the final round be conducted?", a: "The event is held offline at Galgotias University, Greater Noida." },
       { q: "Do I need to bring my own laptop?", a: "Yes, all participants must bring their own laptops for the competition." }
     ]
   }
@@ -371,7 +371,7 @@ export default function App() {
             <article>
               <p className="text-xs uppercase tracking-[0.3em] text-neon">What is this</p>
               <h2 className="mt-4 font-sans text-4xl font-bold leading-tight text-white md:text-6xl hover-glitch">Only the Best Advance</h2>
-              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament organized by LOOP – The Technical Club of GCET.</p>
+              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament organized by LOOP – The Technical Club of Galgotias University.</p>
               <p className="mt-4 text-lg leading-relaxed text-slate-400">The event is designed to test participants’ problem-solving ability, coding speed, and algorithmic thinking under pressure through structured elimination rounds. Think Fast. Code Faster.</p>
             </article>
             <article className="rounded-2xl border border-slate-700/40 bg-black/40 backdrop-blur-md p-8 shadow-2xl">
@@ -626,7 +626,7 @@ export default function App() {
                 <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white">Contact</h3>
                 <ul className="space-y-4 text-sm text-slate-400">
                   <li><a href="mailto:loop.galgotias@gmail.com" className="transition hover:text-white hover:text-neon">loop.galgotias@gmail.com</a></li>
-                  <li className="leading-relaxed">Galgotias College of Engineering and Technology, Greater Noida</li>
+                  <li className="leading-relaxed">Galgotias University, Greater Noida</li>
                 </ul>
               </div>
             </div>
