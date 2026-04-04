@@ -8,13 +8,13 @@ const stats = [
   { value: "Individual", label: "Participation" },
   { value: "₹200", label: "Registration" },
   { value: "₹60K", label: "Prize Pool" },
-  { value: "BYOL", label: "Bring Your Laptop" }
+  { value: "BYOL", label: "Bring Your Own Laptop" }
 ];
 
 const challengeTracks = [
   { name: "Knockout Stages", level: "Elimination", desc: "Multi-round knockout format. In each round, approx. 50% of participants advance. Rounds last 45 minutes with a focus on logic and speed.", tags: ["45 Min Rounds", "50% Advance"] },
-  { name: "Core Problems", level: "Structure", desc: "Each round includes 3 problems: Data Structures & Algorithms, Logical Reasoning, and Implementation. No room for error.", tags: ["DSA", "Logic"] },
-  { name: "Final Showdown", level: "GPL Champion", desc: "Finalists compete in a high-stakes final round. The last remaining participant will be crowned the GPL 1.0 Champion.", tags: ["Finale", "Champion"] }
+{ name: "Core Problems", level: "Structure", desc: "Each round includes 3 problems: Data Structures & Algorithms, Logical Reasoning, and Implementation. No room for error.", tags: ["DSA", "Logic"] },
+{ name: "Final Showdown", level: "GPL Champion", desc: "Finalists compete in a high-stakes final round. The last remaining participant will be crowned the GPL 1.0 Champion.", tags: ["Finale", "Champion"] }
 ];
 
 const rules = [
@@ -371,6 +371,7 @@ export default function App() {
               <p className="text-xs uppercase tracking-[0.3em] text-neon">What is this</p>
               <h2 className="mt-4 font-sans text-4xl font-bold leading-tight text-white md:text-6xl hover-glitch">Only the Best Advance</h2>
               <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament.</p>
+              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament organized by LOOP – The Technical Club of Galgotias University.</p>
               <p className="mt-4 text-lg leading-relaxed text-slate-400">The event is designed to test participants’ problem-solving ability, coding speed, and algorithmic thinking under pressure through structured elimination rounds. Think Fast. Code Faster.</p>
             </article>
             <article className="rounded-2xl border border-slate-700/40 bg-black/40 backdrop-blur-md p-8 shadow-2xl">
