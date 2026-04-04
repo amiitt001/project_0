@@ -332,7 +332,6 @@ export default function App() {
                 {[
                   { src: "/eventlogo.png", alt: "GPL Event Logo" },
                   { src: "/mascot.png", alt: "GPL Mascot" },
-                  { src: "/loop.png", alt: "LOOP Club Logo" }
                 ].map((img, i) => {
                   let stateClass = 'hero-roll-enter';
                   if (i === heroImg) stateClass = 'hero-roll-active';
@@ -371,7 +370,7 @@ export default function App() {
             <article>
               <p className="text-xs uppercase tracking-[0.3em] text-neon">What is this</p>
               <h2 className="mt-4 font-sans text-4xl font-bold leading-tight text-white md:text-6xl hover-glitch">Only the Best Advance</h2>
-              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament organized by LOOP – The Technical Club of GCET.</p>
+              <p className="mt-8 text-lg leading-relaxed text-slate-300">Galgotias Programming League (GPL) 1.0 is a high-intensity competitive programming tournament.</p>
               <p className="mt-4 text-lg leading-relaxed text-slate-400">The event is designed to test participants’ problem-solving ability, coding speed, and algorithmic thinking under pressure through structured elimination rounds. Think Fast. Code Faster.</p>
             </article>
             <article className="rounded-2xl border border-slate-700/40 bg-black/40 backdrop-blur-md p-8 shadow-2xl">
@@ -514,7 +513,7 @@ export default function App() {
         </section>
 
         {/* ── Team ──────────────────────────────────── */}
-        <section data-animate className="w-full bg-transparent py-24 md:py-32 border-t border-slate-800/30">
+        {/* <section data-animate className="w-full bg-transparent py-24 md:py-32 border-t border-slate-800/30">
           <div className="mx-auto w-full max-w-7xl px-6 md:px-10 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-neon">The Team</p>
             <h3 className="mt-4 font-sans text-4xl font-bold text-white md:text-6xl hover-glitch">Organized by LOOP</h3>
@@ -529,7 +528,7 @@ export default function App() {
               </article>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ── FAQ ─────────────────────────────────────── */}
         <section id="faq" data-animate className="w-full bg-transparent py-24 md:py-32 border-t border-slate-800/30">

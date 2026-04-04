@@ -1,8 +1,8 @@
 # 🏆 Galgotias Programming League - GPL 1.0
 
-**Galgotias Programming League (GPL) 1.0** is a high-intensity, flagship competitive programming tournament organized by **LOOP – The Technical Club of GCET**. Designed to foster algorithmic excellence, logic building, and speed, GPL 1.0 features a multi-round elimination format where only the best coders advance.
+**Galgotias Programming League (GPL) 1.0** is a high-intensity, flagship competitive programming tournament. Designed to foster algorithmic excellence, logic building, and speed, GPL 1.0 features a multi-round elimination format where only the best coders advance.
 
-### 🌐 [Live Deployment](https://loop-event.vercel.app/) | [Register on Unstop](https://unstop.com/o/eqZSOMm)
+### 🌐 [Live Deployment](https://gpl.galgotiasunifest.com/) | [Register on Unstop](https://unstop.com/o/eqZSOMm)
 
 ---
 
@@ -34,8 +34,8 @@
 ### Steps
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/amiitt001/loop.event.git
-   cd loop.event
+   git clone https://github.com/amiitt001/GPL1.0
+   cd GPL1.0
    ```
 
 2. **Install dependencies**:
