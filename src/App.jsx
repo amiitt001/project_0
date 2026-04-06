@@ -114,7 +114,7 @@ const faqCategories = [
 ];
 
 const getCountdownTarget = () => {
-  const target = new Date(`2026-04-06T00:00:00+05:30`);
+  const target = new Date(`2026-04-06T17:00:00+05:30`);
   return target;
 };
 
