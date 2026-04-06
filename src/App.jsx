@@ -50,7 +50,7 @@ const memories = [
 ];
 
 const timeline = [
-  { date: "06 Apr | 12:00 AM", title: "Registration Deadline", desc: "Final call for entries. Secure your spot before the league closes." },
+  { date: "06 Apr | 5:00 PM", title: "Registration Deadline", desc: "Final call for entries. Secure your spot before the league closes." },
   { date: "Event Day | 09:00 AM", title: "Reporting & Setup", desc: "Late arrivals lead to disqualification. Bring your own laptops." },
   { date: "Event Day | 45m/Stage", title: "Knockout Rounds", desc: "Continuous 45-minute rounds with approx. 50% elimination each phase." },
   { date: "Event Day | Finale", title: "Grand Ceremony", desc: "Finalists compete for the crown and total prizes worth ₹60,000." }
